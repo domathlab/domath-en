@@ -1,0 +1,504 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Domath Lab</title>
+
+<link rel="shortcut icon" href="https://en.domath.club/favicon.ico?v=1780033483558">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://en.domath.club/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <style>
+        /* Force Sticky Header - Injected by Web Orchestrator */
+        .navbar {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1000 !important;
+            background: rgba(245, 241, 232, 0.9) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border-bottom: 1px solid rgba(36, 58, 52, 0.08) !important;
+            padding: 20px clamp(28px, 6vw, 96px) !important;
+            transition: all 0.3s ease !important;
+        }
+        html {
+            scroll-behavior: smooth !important;
+            scroll-padding-top: 100px !important;
+        }
+        /* Fix jarring background color during jump */
+        .gt-bg-theme-color-first {
+            background: #f5f1e8 !important;
+        }
+        
+        /* Campus Contact Card Styles - Redesigned */
+        .domath-campus-section-footer {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(36, 58, 52, 0.1);
+        }
+        
+        /* Unified Card Grid System */
+        .domath-camp-records, .domath-record-list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .domath-record-card {
+            background: #fff;
+            padding: 24px;
+            border: 1px solid rgba(36, 58, 52, 0.1);
+            transition: all 0.3s ease;
+            display: block;
+            text-decoration: none !important;
+        }
+        .domath-record-card:hover {
+            border-color: #cf422b;
+            box-shadow: 0 10px 30px rgba(207, 66, 43, 0.08);
+            transform: translateY(-2px);
+        }
+        .domath-record-card span {
+            font-size: 12px;
+            color: #cf422b;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .domath-record-card h3 {
+            font-size: 18px;
+            margin: 0 0 10px 0;
+            color: #243a34;
+        }
+        .domath-record-card p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        /* Adaptation: Remove original domath-two split layout, use vertical full width */
+        .domath-two {
+            display: block !important;
+        }
+        .domath-two > div:first-child {
+            margin-bottom: 30px;
+        }
+        .domath-program-copy {
+            max-width: 100% !important;
+        }
+        
+        /* Homepage Hero image fill style */
+        .domath-hero__visual {
+            padding: 0 !important;
+            border: none !important;
+            background: #f5f1e8 !important;
+        }
+        .domath-hero__poster {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+        }
+        .domath-campus-contacts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: rgba(232, 221, 202, 0.2); /* Soft Sand */
+            padding: 40px;
+            border-radius: 2px;
+            border-left: 4px solid #cf422b; /* Brand Red Line */
+        }
+        .domath-campus-card {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            text-align: left;
+        }
+        .domath-campus-info h3 {
+            margin: 0 0 4px 0;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .domath-campus-info p {
+            margin: 0;
+            color: #cf422b;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .domath-campus-card img {
+            width: 110px;
+            height: 110px;
+            background: #fff;
+            padding: 5px;
+            border: 1px solid rgba(0,0,0,0.05);
+            flex-shrink: 0;
+        }
+        @media (max-width: 992px) {
+            .domath-campus-contacts {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="main domath-site">
+    <div class="main-content">
+        <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="Avatar">
+        <div class="site-name gt-c-content-color-first">
+            Domath Lab
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav ml-auto" style="text-align: center">
+            <div class="nav-item">
+                <a href="/" class="menu gt-a-link">Home</a>
+            </div>
+            <div class="nav-item">
+                <a href="/#core-math-detail" class="menu gt-a-link">Core Concepts</a>
+            </div>
+            <div class="nav-item">
+                <a href="/#big-vision-detail" class="menu gt-a-link">Big Vision</a>
+            </div>
+            <div class="nav-item">
+                <a href="/#et-camp-detail" class="menu gt-a-link">Engineering</a>
+            </div>
+            <div class="nav-item">
+                <a href="/#core-concept-camp-detail" class="menu gt-a-link">Math Camp</a>
+            </div>
+            <div class="nav-item">
+                <a href="/#contact" class="menu gt-a-link">Contact</a>
+            </div>
+            <div class="nav-item">
+                <a href="https://domath.club" class="menu gt-a-link" style="color: #cf422b !important; font-weight: 800;">中文</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+        <main class="domath-home">
+            <section class="domath-hero">
+                <div class="domath-hero__content">
+                    <p class="domath-kicker">Domath Math & Engineering Lab</p>
+                    <h1>Defending Mathematics,<br>Practicing Engineering.</h1>
+                    <p class="domath-hero__lead">
+                        Domath Math & Engineering Lab serves schools, families, and educators by designing math courses, themed camps, engineering projects, and math cultural events. We help children see math through play, making, and real-world problem-solving, and teach them to turn ideas into reality with diligence.
+                    </p>
+                    <div class="domath-hero__actions">
+                        <a class="domath-button domath-button--primary" href="#projects">Our Programs</a>
+                        <a class="domath-button" href="/archives">Read Articles</a>
+                        <a class="domath-button" href="#contact">Contact & Collab</a>
+                    </div>
+                </div>
+                <div class="domath-hero__visual" aria-hidden="true">
+                    <img src="/images/hero-poster.jpg" alt="2026 Domath Summer Camp" class="domath-hero__poster">
+                </div>
+            </section>
+
+            <section class="domath-statement">
+                <div>
+                    <p class="domath-kicker">Why Domath</p>
+                    <h2>We aim to answer three questions: What is mathematics? Why learn it? Where is it?</h2>
+                </div>
+                <p>
+                    For Domath, math is not just a tool for exams. It can be games, art, experiments, conversations, and construction; it trains logic and opens up aesthetics, imagination, and creativity. Engineering allows children to work with materials, structures, rules, and constraints, learning to verify, iterate, and take responsibility for real results.
+                </p>
+            </section>
+
+            <section class="domath-strip" aria-label="Methods">
+                <div>
+                    <strong>Math Games</strong>
+                    <span>Making abstract structures accessible through games, strategies, and rules.</span>
+                </div>
+                <div>
+                    <strong>Hands-on Making</strong>
+                    <span>Starting from materials, experiencing design, failure, correction, and completion.</span>
+                </div>
+                <div>
+                    <strong>Project Inquiry</strong>
+                    <span>Embedding math, engineering, and art into real-world tasks and space problems.</span>
+                </div>
+            </section>
+
+            <section class="domath-section" id="projects">
+                <div class="domath-section__head">
+                    <p class="domath-kicker">Explore</p>
+                    <h2>Core Programs</h2>
+                    <p>From deep daily courses to high-density themed camps, we provide deep mathematical and engineering exploration through four dimensions.</p>
+                </div>
+                <div class="domath-projects">
+                    <a class="domath-project" id="core-math" href="#core-math-detail">
+                        <span>01</span>
+                        <h3>7 Core Concept Math Course</h3>
+                        <p>Daily course product. Focused on Sets, Number Sense, Geometry, Measurement, Spatial Relations, Patterns, and Data Analysis.</p>
+                    </a>
+                    <a class="domath-project" id="big-vision" href="#big-vision-detail">
+                        <span>02</span>
+                        <h3>Big Vision Math</h3>
+                        <p>Camp brand. Exploring mathematical history, culture, and games beyond exams, showing the beauty and fun of mathematics.</p>
+                    </a>
+                    <a class="domath-project" id="et-camp" href="#et-camp-detail">
+                        <span>03</span>
+                        <h3>E.T. Engineering Camp</h3>
+                        <p>Camp brand. Learning structure, collaboration, and creativity through real materials and hands-on construction tasks.</p>
+                    </a>
+                    <a class="domath-project" id="core-concept-camp" href="#core-concept-camp-detail">
+                        <span>04</span>
+                        <h3>Core Concept Math Camp</h3>
+                        <p>Camp brand. Intensive learning of core concepts through games and problem-solving during holidays and weekends.</p>
+                    </a>
+                </div>
+            </section>
+
+            <section class="domath-section domath-program-detail" id="core-math-detail">
+                <div class="domath-section__head">
+                    <p class="domath-kicker">Core Concepts</p>
+                    <h2>7 Core Concept Math Course</h2>
+                    <p>This is Domath's independent core concept system. It is based on the logic of knowledge but not limited to textbooks; it values both mathematical ability and the inner meaning behind math problems.</p>
+                </div>
+                <div class="domath-concepts">
+                    <span>Sets</span>
+                    <span>Number Sense</span>
+                    <span>Geometry</span>
+                    <span>Measurement</span>
+                    <span>Spatial Relations</span>
+                    <span>Patterns</span>
+                    <span>Data Analysis</span>
+                </div>
+                
+                <div class="domath-campus-section-footer">
+                    <div class="domath-campus-contacts">
+                        <div class="domath-campus-card">
+                            <img src="/images/contact/kuanzhai-qr.png" alt="Nanmen Campus QR Code">
+                            <div class="domath-campus-info">
+                                <h3>Nanmen Campus</h3>
+                                <p>WeChat: Teacher Li</p>
+                            </div>
+                        </div>
+                        <div class="domath-campus-card">
+                            <img src="/images/contact/nanmen-qr.jpg" alt="Kuanzhai Campus QR Code">
+                            <div class="domath-campus-info">
+                                <h3>Kuanzhai Campus</h3>
+                                <p>WeChat: Teacher Liang</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="domath-section domath-program-detail domath-camp-section" id="core-concept-camp-detail">
+                <div class="domath-section__head">
+                    <p class="domath-kicker">Core Concept Camp</p>
+                    <h2>Core Concept Math Camp</h2>
+                    <p>Core Concept Math Camp is not a simple compression of daily classes, but a concentrated experience, layered challenge, and project-based expression around the same set of core concepts.</p>
+                </div>
+                <div class="domath-camp-records">
+                    <a class="domath-record-card" href="https://mp.weixin.qq.com/s/ZL0DoM4j5lH73v6Ls5iaWQ" target="_blank" rel="noopener">
+                        <span>2026 Summer Camp</span>
+                        <h3>Core Concept Math Camp</h3>
+                        <p>Dual campuses in Kuanzhai and Nanmen; for grades 1-8; deepening understanding of math concepts through board games and making.</p>
+                    </a>
+                    <a class="domath-record-card" href="https://mp.weixin.qq.com/s/NOt6Q_B6GXA8As8Shjpggw" target="_blank" rel="noopener">
+                        <span>2026 Winter Camp</span>
+                        <h3>Core Concept Math Camp</h3>
+                        <p>Dual campuses in Kuanzhai and Nanmen; for grades 1-5.</p>
+                    </a>
+                    <a class="domath-record-card" href="https://mp.weixin.qq.com/s/LB4B5-RbYfWanNc6e34rDQ" target="_blank" rel="noopener">
+                        <span>2025 Summer Camp</span>
+                        <h3>Core Concept Math Camp</h3>
+                        <p>Layered for grades 1-2, 3-4, and 5-6.</p>
+                    </a>
+                    <a class="domath-record-card" href="https://mp.weixin.qq.com/s/DhyKTdPPg-1eZqXKvlxS3w" target="_blank" rel="noopener">
+                        <span>2025 Winter Camp</span>
+                        <h3>Core Concept Math Camp</h3>
+                        <p>Layered for grades 1-2, 3-4, and 5-6.</p>
+                    </a>
+                </div>
+            </section>
+
+            <section class="domath-section domath-method">
+                <div class="domath-section__head">
+                    <p class="domath-kicker">How We Teach</p>
+                    <h2>How Camps and Courses Happen</h2>
+                </div>
+                <div class="domath-method__grid">
+                    <div>
+                        <h3>Enter through Play</h3>
+                        <p>Experience multiple games around the same math theme; understand mathematical structures through comparison, analysis, and review.</p>
+                    </div>
+                    <div>
+                        <h3>Deepen through Making</h3>
+                        <p>Turn abstract concepts into visible, touchable, and discussable works through game design, math art, and spatial construction.</p>
+                    </div>
+                    <div>
+                        <h3>Extend through Real Problems</h3>
+                        <p>Let students experience the hardship of creation and the joy of completion, adjusting plans within constraints and verifying understanding in works.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="domath-section domath-two" id="big-vision-detail">
+                <div>
+                    <p class="domath-kicker">Big Vision</p>
+                    <h2>Big Vision Math</h2>
+                </div>
+                <div class="domath-program-copy">
+                    <p>
+                        Big Vision Math focuses on topics that may not appear in school exams but broaden the boundaries of mathematics. It helps children understand the relationships between math and history, art, nature, architecture, games, and social life, making "Where is mathematics?" a visible experience.
+                    </p>
+                    <div class="domath-record-list-grid" aria-label="Big Vision Math Records">
+                        <a class="domath-record-card" href="/post/why-everyone-should-learn-math/">
+                            <span>Recommended Article</span>
+                            <h3>Why should everyone learn math?</h3>
+                            <p>Yao's recommended book list: The Power of Math, How to Solve It, A Brief History of Math, Shaping the Mathematical Brain.</p>
+                        </a>
+                        <a class="domath-record-card" href="https://mp.weixin.qq.com/s/VsVC5TK5kUzrQyRz4fYHRQ" target="_blank" rel="noopener">
+                            <span>2026 Winter Camp</span>
+                            <h3>Big Vision Math Camp</h3>
+                            <p>Exploring interdisciplinary connections between math, art, and nature.</p>
+                        </a>
+                        <a class="domath-record-card" href="https://mp.weixin.qq.com/s/fEEmsf5kY3VmOTIgj2o0Wg" target="_blank" rel="noopener">
+                            <span>2025 Camp</span>
+                            <h3>Math Games Design Camp</h3>
+                            <p>Integrating mathematical logic into sports and competition design.</p>
+                        </a>
+                        <a class="domath-record-card" href="https://mp.weixin.qq.com/s/RDP_CStHNJg9XW2XOK0pHg" target="_blank" rel="noopener">
+                            <span>2025 Oct Camp</span>
+                            <h3>Start from Math Reading</h3>
+                            <p>Opening the door to mathematics through reading.</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="domath-section domath-two domath-two--dark" id="et-camp-detail">
+                <div>
+                    <p class="domath-kicker">Engineering</p>
+                    <h2>E.T. Engineering Camp</h2>
+                </div>
+                <div class="domath-program-copy">
+                    <p>
+                        E.T. Engineering Camp continues Domath's emphasis on "making". Children don't just listen to a knowledge point, but face an engineering task to be completed: design, build, test, fail, correct, and cooperate, finally letting a real work stand up, run, and be used.
+                    </p>
+                    <div class="domath-record-list-grid" aria-label="E.T. Engineering Camp Records">
+                        <a class="domath-record-card" href="https://mp.weixin.qq.com/s/nooati6ijMZa6PV7opomqg" target="_blank" rel="noopener">
+                            <span>2026 Winter Camp</span>
+                            <h3>Rube Goldberg Machine Camp</h3>
+                            <p>Designing and building complex chain reaction mechanical devices.</p>
+                        </a>
+                        <a class="domath-record-card" href="https://mp.weixin.qq.com/s/dq5CsbVXId-YwMNf0DksdQ" target="_blank" rel="noopener">
+                            <span>2025 Summer Camp</span>
+                            <h3>Polyhedral Treehouse Construction</h3>
+                            <p>Learning structural mechanics and spatial construction in nature.</p>
+                        </a>
+                        <a class="domath-record-card" href="https://mp.weixin.qq.com/s/4MJgFVPmztOMhryzJJNImw" target="_blank" rel="noopener">
+                            <span>2025 Winter Camp</span>
+                            <h3>Deconstruct & Reconstruct</h3>
+                            <p>Deconstruction and reconstruction of real materials to cultivate engineering thinking.</p>
+                        </a>
+                        <a class="domath-record-card" href="https://mp.weixin.qq.com/s/yYeTbvMlb2KIxFXtMTWe1Q" target="_blank" rel="noopener">
+                            <span>Engineering Project</span>
+                            <h3>Mini 4WD & Track Design</h3>
+                            <p>Practical validation of speed, power, and aerodynamics.</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="domath-section domath-audience">
+                <div class="domath-section__head">
+                    <p class="domath-kicker">For Whom</p>
+                    <h2>Who We Serve</h2>
+                </div>
+                <div class="domath-audience__grid">
+                    <div>
+                        <h3>Schools</h3>
+                        <p>Co-building math festivals, activity days, project-based learning (PBL) courses, school-based curricula, and teacher training.</p>
+                    </div>
+                    <div>
+                        <h3>Parents</h3>
+                        <p>Providing math learning experiences different from rote practice, helping children gain interest, understanding, and creative confidence.</p>
+                    </div>
+                    <div>
+                        <h3>Educators</h3>
+                        <p>Jointly developing courses, camps, math making projects, interdisciplinary programs, and public education activities.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="domath-contact" id="contact">
+                <div>
+                    <p class="domath-kicker">Collaboration</p>
+                    <h2>Making Math Visible,<br>Engineering Diligent.</h2>
+                    <p>If you are looking for math and engineering education solutions for schools, families, camps, public cultural spaces, or educational projects, feel free to connect with Domath.</p>
+                </div>
+                <a class="domath-button domath-button--primary" href="mailto:hi.junjie@outlook.com">Connect & Collab</a>
+            </section>
+        </main>
+
+        <div class="site-footer">
+    <div class="slogan">See Math | Love Math</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div class="footer-links">
+        <a href="/archives">All Articles</a>
+    </div>
+    <div>
+        Theme by Pineapple, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://en.domath.club/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

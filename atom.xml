@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://en.domath.club</id>
+    <title>Domath Lab</title>
+    <updated>2026-05-29T05:44:47.848Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://en.domath.club"/>
+    <link rel="self" href="https://en.domath.club/atom.xml"/>
+    <subtitle>See Math | Love Math</subtitle>
+    <logo>https://en.domath.club/images/avatar.png</logo>
+    <icon>https://en.domath.club/favicon.ico</icon>
+    <rights>All rights reserved 2026, Domath Lab</rights>
+    <entry>
+        <title type="html"><![CDATA[Welcome to Domath Lab]]></title>
+        <id>https://en.domath.club/post/hello-world-en/</id>
+        <link href="https://en.domath.club/post/hello-world-en/">
+        </link>
+        <updated>2026-05-23T02:00:00.000Z</updated>
+    </entry>
+</feed>
